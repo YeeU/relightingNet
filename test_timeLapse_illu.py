@@ -97,7 +97,7 @@ def build_model(input_height, input_width):
 		shadow_gen = sdNet.shadow_generator(init_sd(nm_pred, new_lighting_var), options, name='sd_generator')
 
 
-		g_input = tf.concat([albedo, nm_pred, new_shading, residual, shadow_gen, 1-mask_var], axis=-1)
+		g_input = tf.concat([albedo, nm_pred, shading, residual, shadow_gen, 1-mask_var], axis=-1)
 
 		relit_rendering = renderingNet.rendering_Net(inputs=g_input, masks=mask_var, is_training=train_flag, height=input_height, width=input_width, n_layers=30, n_pools=4, depth_base=32)
 

@@ -97,7 +97,7 @@ def build_model(input_height, input_width):
 		shadow_gen = sdNet.shadow_generator(init_sd(nm_pred, new_lighting), options, name='sd_generator')
 
 
-		g_input = tf.concat([albedo, nm_pred, new_shading, residual, shadow_gen, 1-mask_var], axis=-1)
+		g_input = tf.concat([albedo, nm_pred, shading, residual, shadow_gen, 1-mask_var], axis=-1)
 
 		relit_rendering = renderingNet.rendering_Net(inputs=g_input, masks=mask_var, is_training=train_flag, height=input_height, width=input_width, n_layers=30, n_pools=4, depth_base=32)
 
@@ -142,7 +142,6 @@ skyGen_saver.restore(sess, skyGen_model_path)
 [rendering_val] = sess.run([rendering], feed_dict={train_flag:False, input1_var:img1, input2_var:img2, mask_var:img_mask})
 
 rendering_val = np.uint8(rendering_val[0]*255.)
-# rendering_val = (rendering_val - rendering_val.min()) / (rendering_val.max() - rendering_val.min())
 io.imsave(dst_dir, rendering_val)
 
 

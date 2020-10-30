@@ -38,7 +38,7 @@ class Irn_layer(object):
         # infer lightings
         gamma = tf.constant(2.2)
 
-        lighting_model = '../hdr_illu_pca'
+        lighting_model = 'illu_pca'
         lighting_vectors = tf.constant(np.load(os.path.join(lighting_model,'pcaVector.npy')),dtype=tf.float32)
         lighting_means = tf.constant(np.load(os.path.join(lighting_model,'mean.npy')),dtype=tf.float32)
         lightings_var = tf.constant(np.load(os.path.join(lighting_model,'pcaVariance.npy')),dtype=tf.float32)
