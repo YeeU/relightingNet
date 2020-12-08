@@ -86,7 +86,9 @@ def build_model(input_height, input_width):
 		albedo, shadow, nm_pred, lighting = irnLayer(input_noSky, mask_var)
 
 
-		shading, rendering_mask = lambSH_layer.lambSH_layer(tf.ones_like(albedo), nm_pred, new_lighting_var, tf.ones_like(shadow), 1.)
+		shading, rendering_mask = lambSH_layer.lambSH_layer(tf.ones_like(albedo), nm_pred, lighting, tf.ones_like(shadow), 1.)
+
+		new_shading, rendering_mask = lambSH_layer.lambSH_layer(tf.ones_like(albedo), nm_pred, new_lighting_var, tf.ones_like(shadow), 1.)
 
 		rendering = tf.pow(albedo * shading * shadow, 1/2.2)
 		residual = input_noSky - rendering
@@ -97,7 +99,7 @@ def build_model(input_height, input_width):
 		shadow_gen = sdNet.shadow_generator(init_sd(nm_pred, new_lighting_var), options, name='sd_generator')
 
 
-		g_input = tf.concat([albedo, nm_pred, shading, residual, shadow_gen, 1-mask_var], axis=-1)
+		g_input = tf.concat([albedo, nm_pred, new_shading, residual, shadow_gen, 1-mask_var], axis=-1)
 
 		relit_rendering = renderingNet.rendering_Net(inputs=g_input, masks=mask_var, is_training=train_flag, height=input_height, width=input_width, n_layers=30, n_pools=4, depth_base=32)
 

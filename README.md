@@ -28,7 +28,7 @@ To run our evaluation code, please create your environment based on following de
 ### Pretrained model
 
 #### Relighting model
-* Download our pretrained relighting model from: [Link](https://drive.google.com/uc?export=download&id=1IHIpTvzoCbZcuVY4KVYUaPelLzE5H9uz)
+* Download our pretrained relighting model from: [Link](https://drive.google.com/uc?export=download&id=1HG9U2a5baElJekpIjs9NxLH8L5oIH0nr)
 * Make sure the model files are placed in a folder named "relight_model"
 
 #### Sky model
