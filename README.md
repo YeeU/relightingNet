@@ -27,13 +27,9 @@ To run our evaluation code, please create your environment based on following de
 
 ### Pretrained model
 
-#### Relighting model
-* Download our pretrained relighting model from: [Link](https://drive.google.com/uc?export=download&id=1HG9U2a5baElJekpIjs9NxLH8L5oIH0nr)
-* Make sure the model files are placed in a folder named "relight_model"
-
-#### Sky model
-* Download our pretrained sky generation model from: [Link](https://drive.google.com/uc?export=download&id=1gvwDGFZN82C0Ankimoo1CXs9SveEezX1)
-* Make sure the model files are placed in a folder named "model_skyGen_net"
+#### Relighting and Sky models
+* Download our pretrained models from: [Link](https://drive.google.com/drive/folders/1XEXPtfTwRTtRaom1QFY3qfwyY5Z-Kkty?usp=sharing)
+* Untar model checkpoints, and put checkpoint files into "relight_model" and "model_skyGen_net" folders. 
 
 
 ### Test on time-lapse image pair
